@@ -1,18 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePages, Login, Register } from "../pages";
+import { MainApp, Login, Register, HomePage, CreateBlog, DetailBlog } from "../pages";
 
 const RouteApps = () => {
     return (
-        <React.Fragment>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" exact element={<HomePages />} />
-                    <Route path="/register" exact element={<Register />} />
-                    <Route path="/login" exact element={<Login />} />
-                </Routes>
-            </BrowserRouter>
-        </React.Fragment>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/register" exact element={<Register />} />
+                <Route path="/login" exact element={<Login />} />
+                <Route path="/" element={<MainApp />} >
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="create" element={<CreateBlog />} />
+                    <Route path="detail/:postId" element={<DetailBlog />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     )
 }
 
