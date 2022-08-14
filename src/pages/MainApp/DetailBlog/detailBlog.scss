@@ -1,0 +1,37 @@
+.detail-blog-wrapper {
+    padding: 40px 0;
+
+    .image-post {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+
+    }
+
+    .title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #2d2d2d;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .meta {
+        margin: 0;
+        font-size: 16px;
+        color: gray;
+    }
+
+    .description {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    .back {
+        color: gray;
+        cursor: pointer;
+        font-size: 18px;
+        text-decoration: underline;
+
+    }
+}

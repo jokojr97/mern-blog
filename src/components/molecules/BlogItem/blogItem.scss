@@ -9,12 +9,14 @@
         width: 100%;
         height: 200px;
         object-fit: cover;
+        cursor: pointer;
     }
 
     .content-detail {
         padding: 3%;
 
         .title {
+            cursor: pointer;
             margin: 0;
             font-size: 20px;
             font-weight: bold;

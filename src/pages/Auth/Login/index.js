@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { RegisterBg } from "../../../assets";
 import { Button, Input, Gap, Link } from "../../../components";
 
 const Register = () => {
+    const navigate = useNavigate()
     return (
         <div className="main-page">
             <div className="left">
@@ -15,7 +17,7 @@ const Register = () => {
                 <Gap height={20} />
                 <Button title="Login" />
                 <Gap height={60} />
-                <Link title="Kembali Ke Login" />
+                <Link title="Kembali Ke Register" onClick={() => navigate("/register")} />
             </div>
         </div>
     )
