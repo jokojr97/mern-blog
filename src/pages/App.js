@@ -1,10 +1,13 @@
 import logo from '../assets/images/logo.svg';
-import RouteApps from '../config/router';
+import { RouteApps, store } from '../config';
+import { Provider } from "react-redux"
 import './App.css';
 
 function App() {
   return (
-    <RouteApps />
+    <Provider store={store}  >
+      <RouteApps />
+    </Provider>
   );
 }
 
