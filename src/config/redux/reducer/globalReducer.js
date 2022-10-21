@@ -1,12 +1,12 @@
 const initialState = {
-    dataBlogs: [],
+    dataBlog: [],
     name: "joko"
 }
 const globalReducer = (state = initialState, action) => {
     if (action.type === "UPDATE_DATA_BLOG") {
         return {
             ...state,
-            dataBlogs: action.payload
+            dataBlog: action.payload
         }
     } else if (action.type === "UPDATE_NAME") {
         return {

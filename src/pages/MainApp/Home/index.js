@@ -7,28 +7,27 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 const HomePage = () => {
-    const [dataBlog, setDataBlog] = useState([]);
+    // const [dataBlog, setDataBlog] = useState([]);
     const dispacth = useDispatch();
 
     // const { dataBlog, name } = useSelector(state => state);
-    const stateGlobal = useSelector(state => state.homeReducer);
+    const { dataBlog } = useSelector(state => state.homeReducer);
 
-    console.log("dataBlog Global", stateGlobal);
+    console.log("dataBlog Global", dataBlog);
     useEffect(() => {
         setTimeout(() => {
             // dispacth({ type: 'UPDATE_NAME' })
         }, 3000);
-        Axios.get('http://localhost:4000/v1/blog/posts?page=1&perPage=5w')
+        Axios.get('http://localhost:4000/v1/blog/posts?page=1&perPage=5')
             .then(result => {
-                console.log('data API: ', result);
                 const responseAPI = result.data;
-                setDataBlog(responseAPI.data);
-                // dispacth({ type: 'UPDATE_DATA_BLOG', payload: responseAPI.data })
+
+                dispacth({ type: 'UPDATE_DATA_BLOG', payload: responseAPI.data })
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [dispacth])
     const history = useNavigate();
     return (
         <div className='home-page-wrapper'>
