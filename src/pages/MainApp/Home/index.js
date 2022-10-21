@@ -10,19 +10,20 @@ const HomePage = () => {
     const [dataBlog, setDataBlog] = useState([]);
     const dispacth = useDispatch();
 
-    const { dataBlogs, name } = useSelector(state => state);
+    // const { dataBlog, name } = useSelector(state => state);
+    const stateGlobal = useSelector(state => state.homeReducer);
 
-    console.log("dataBlogs Global", dataBlogs);
+    console.log("dataBlog Global", stateGlobal);
     useEffect(() => {
         setTimeout(() => {
-            dispacth({ type: 'UPDATE_NAME' })
+            // dispacth({ type: 'UPDATE_NAME' })
         }, 3000);
-        Axios.get('http://localhost:4000/v1/blog/posts')
+        Axios.get('http://localhost:4000/v1/blog/posts?page=1&perPage=5w')
             .then(result => {
-                // console.log('data API: ', result);
+                console.log('data API: ', result);
                 const responseAPI = result.data;
                 setDataBlog(responseAPI.data);
-                dispacth({ type: 'UPDATE_DATA_BLOG', payload: responseAPI.data })
+                // dispacth({ type: 'UPDATE_DATA_BLOG', payload: responseAPI.data })
             })
             .catch(err => {
                 console.log(err)
@@ -36,7 +37,7 @@ const HomePage = () => {
             </div>
             <Gap height={20} />
             <div className='content-wrapper'>
-                {dataBlogs.map(blog => {
+                {dataBlog.map(blog => {
                     return <BlogItem
                         key={blog._id}
                         title={blog.title}
@@ -45,7 +46,7 @@ const HomePage = () => {
                         date={blog.createdAt} />
                 })}
             </div>
-            <p>{name}</p>
+            {/* <p>{name}</p> */}
             <Gap height={20} />
             <div className="pagination">
                 <Button title="Previous" />
